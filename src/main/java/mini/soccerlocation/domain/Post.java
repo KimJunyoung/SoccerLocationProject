@@ -20,6 +20,9 @@ public class Post {
 
     private String content;
 
+    public Post() {
+    }
+
     @Builder
     public Post(String title, String content) {
         this.title = title;

@@ -21,13 +21,15 @@ public class PostService {
     private final PostRepository postRepository;
 
     @Transactional
-    public void write(PostCreate postCreate) {
+    public Long write(PostCreate postCreate) {
         Post post = Post.builder()
                 .title(postCreate.getTitle())
                 .content(postCreate.getContent())
                 .build();
 
-        postRepository.save(post);
+        Post save = postRepository.save(post);
+
+        return save.getId();
     }
 
     public PostResponse getOne(Long postId) {

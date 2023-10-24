@@ -113,6 +113,29 @@ class PostServiceTest {
 
     }
 
+    @Test
+    @DisplayName("전체 조회")
+    public void test5(){
+        // given
+        Post post1 = Post.builder()
+                .title("제목1")
+                .content("내용1")
+                .build();
+        Post post2 = Post.builder()
+                .title("제목2")
+                .content("내용2")
+                .build();
+
+        postRepository.save(post1);
+        postRepository.save(post2);
+
+        // when
+        List<PostResponse> allPost = postService.getAllPost();
+
+        // then
+        assertThat(allPost.get(0).getTitle()).isEqualTo("제목1");
+    }
+
 
 
 
