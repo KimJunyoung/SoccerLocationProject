@@ -20,7 +20,6 @@ public class NoValueException extends MainException {
 
     public NoValueException(String fieldName, String message) {
         super(MESSAGE);
-        addValidation(fieldName, message);
     }
 
 

@@ -62,6 +62,24 @@ class PostControllerTest {
     }
 
     @Test
+    @DisplayName("게시글 저장시도 -> 입력 값 누락")
+    public void test1_1() throws Exception {
+        // given
+        PostCreate postCreate = PostCreate.builder()
+                .title("제목")
+                .build();
+
+        String json = objectMapper.writeValueAsString(postCreate);
+
+        // expected
+            mockMvc.perform(post("/post/save")
+                    .contentType(APPLICATION_JSON)
+                    .content(json))
+                    .andExpect(status().isOk())
+                    .andDo(print());
+    }
+
+    @Test
     @DisplayName("게시글 한건 조회 - 성공")
     public void test2() throws Exception {
         // given
@@ -98,5 +116,7 @@ class PostControllerTest {
                 .andDo(print());
 
     }
+
+
 
 }

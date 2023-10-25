@@ -2,12 +2,16 @@ package mini.soccerlocation.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import mini.soccerlocation.exception.NoValueException;
+import mini.soccerlocation.exception.OneMissingException;
 import mini.soccerlocation.request.PostCreate;
 import mini.soccerlocation.request.PostSearch;
 import mini.soccerlocation.response.PostResponse;
 import mini.soccerlocation.service.PostService;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -25,7 +29,8 @@ public class PostController {
      *  삭제
      */
     @PostMapping("/post/save")
-    public Long write(@RequestBody PostCreate postCreate){
+    public Long write(@Valid @RequestBody PostCreate postCreate){
+
         return postService.write(postCreate);
     }
 

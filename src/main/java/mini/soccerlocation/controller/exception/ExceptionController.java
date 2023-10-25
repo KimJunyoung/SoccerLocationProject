@@ -4,6 +4,7 @@ import mini.soccerlocation.exception.MainException;
 import mini.soccerlocation.exception.NoValueException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -26,6 +27,7 @@ public class ExceptionController {
         ResponseEntity<ErrorResponse> response = ResponseEntity
                 .status(status)
                 .body(body);
+
 
         return response;
     }
