@@ -231,6 +231,7 @@ class PostControllerTest {
                 .build();
 
         String json = objectMapper.writeValueAsString(postEdit);
+        // test
 
         // expected
         mockMvc.perform(post("/post/{postId}", post.getId() + 1L)
