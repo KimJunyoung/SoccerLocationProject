@@ -1,18 +1,16 @@
-package mini.soccerlocation.response;
+package mini.soccerlocation.request;
 
 import lombok.Builder;
 import lombok.Data;
 
 @Data
-public class PostResponse {
+public class PostEdit {
 
-    private Long id;
     private String title;
     private String content;
 
     @Builder
-    public PostResponse(Long id, String title, String content) {
-        this.id = id;
+    public PostEdit(String title, String content) {
         this.title = title;
         this.content = content;
     }

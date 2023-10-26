@@ -20,12 +20,20 @@ public class PostRepositoryImpl implements PostRepositoryCustom{
     public List<Post> getList(PostSearch postSearch) {
         String title = postSearch.getTitle();
         String content = postSearch.getContent();
+        long offset = postSearch.getOffset();
 
         return query.select(post)
                 .from(post)
+                .offset(offset)
+                .limit(5L)
                 .where(likePostTitle(title), likePostContent(content))
+                .orderBy(post.id.desc())
                 .fetch();
     }
+
+    /**
+     * 특정 검색어
+     */
 
     private BooleanExpression likePostTitle(String title) {
         if (StringUtils.hasText(title)) {
